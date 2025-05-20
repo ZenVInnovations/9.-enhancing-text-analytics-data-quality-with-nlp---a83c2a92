@@ -1,66 +1,117 @@
-# Text Analytics with NLP
+# Text Analysis Web Application
 
-This project provides a comprehensive solution for enhancing text analytics data quality using advanced NLP techniques. It includes functionality for text normalization, entity recognition, and sentiment analysis.
+A powerful web-based text analysis tool that provides sentiment analysis, named entity recognition, and text preprocessing capabilities. Built with Python, Flask, and modern NLP libraries.
 
 ## Features
 
-- Text preprocessing and normalization
-- Spelling correction
-- Stopword removal
-- Lemmatization
-- Named Entity Recognition (NER)
-- Sentiment Analysis (using both TextBlob and Transformers)
+- **Text Preprocessing**
+  - Text normalization
+  - Stopword removal
+  - Lemmatization
+  - Spelling correction
 
-## Setup
+- **Sentiment Analysis**
+  - Polarity detection (positive/negative/neutral)
+  - Subjectivity analysis
+  - Confidence scoring
 
-1. Install the required dependencies:
+- **Named Entity Recognition**
+  - Person names
+  - Organizations
+  - Locations
+  - Dates
+  - And more...
+
+## Prerequisites
+
+- Python 3.8 or higher
+- pip (Python package installer)
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd text-analysis-webapp
+```
+
+2. Create a virtual environment (recommended):
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. Install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Download the spaCy English model:
+4. Download required NLTK data:
+```python
+python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords'); nltk.download('wordnet'); nltk.download('averaged_perceptron_tagger')"
+```
+
+5. Download spaCy model:
 ```bash
 python -m spacy download en_core_web_sm
 ```
 
+## Running the Application
+
+1. Start the Flask server:
+```bash
+python app.py
+```
+
+2. Open your web browser and navigate to:
+```
+http://localhost:5000
+```
+
 ## Usage
 
-The project consists of three main components:
+1. Enter or paste your text in the input area
+2. Click the "Analyze Text" button
+3. View the analysis results:
+   - Cleaned text
+   - Named entities
+   - Sentiment analysis scores
 
-1. `text_preprocessor.py`: Handles text cleaning and normalization
-2. `text_analyzer.py`: Provides entity recognition and sentiment analysis
-3. `demo.py`: Demonstrates the usage of the text analytics functionality
+## Project Structure
 
-To run the demo:
-```bash
-python demo.py
+```
+text-analysis-webapp/
+├── app.py                 # Flask application
+├── text_analyzer.py       # Text analysis logic
+├── text_preprocessor.py   # Text preprocessing utilities
+├── templates/
+│   └── index.html        # Web interface
+└── requirements.txt      # Project dependencies
 ```
 
-## Example Usage
+## Dependencies
 
-```python
-from text_analyzer import TextAnalyzer
+- Flask: Web framework
+- spaCy: NLP library for entity recognition
+- NLTK: Natural Language Toolkit
+- TextBlob: Sentiment analysis
+- Other dependencies listed in requirements.txt
 
-# Create an analyzer instance
-analyzer = TextAnalyzer()
+## Contributing
 
-# Analyze your text
-your_text = "Your text goes here"
-results = analyzer.analyze_text(your_text)
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-# The results will contain:
-print(results['original_text'])  # Your original text
-print(results['cleaned_text'])   # Preprocessed text
-print(results['entities'])       # Named entities found
-print(results['sentiment'])      # Sentiment analysis results
-```
+## License
 
-## Output Format
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-The analysis results include:
-- Original text
-- Cleaned text
-- Named entities (categorized by type)
-- Sentiment analysis results from both TextBlob and Transformers
-  - TextBlob: Polarity and subjectivity scores
-  - Transformers: Sentiment label and confidence score 
+## Acknowledgments
+
+- spaCy for NLP capabilities
+- NLTK for text processing
+- TextBlob for sentiment analysis
+- Flask for the web framework 
